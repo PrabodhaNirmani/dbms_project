@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/materialize/css/materialize.min.css') }}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/materialize/css/materialize.css') }}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/materialize/css/style.css') }}"  media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!--<meta charset="UTF-8" /> -->
+        <title>
+            {% block title %}Welcome!{% endblock %}
+        </title>
+
+        {% block stylesheets %}{% endblock %}
+
+        <!--<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />-->
+    </head>
+    <body>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{{ asset('bundles/materialize/js/materialize.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/materialize/js/init.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/materialize/js/materialize.js') }}"></script>
+
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
