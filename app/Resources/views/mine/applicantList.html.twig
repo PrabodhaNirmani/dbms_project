@@ -1,0 +1,109 @@
+{% extends 'block.html.twig' %}
+
+
+{% block title %} Search Page{% endblock %}
+{% block header %}
+    <nav class="teal" role="navigation">
+        <div class="nav-wrapper ">
+            <a id="logo-container" href="#" class="brand-logo left">
+                <i class="material-icons">visibility</i>iSolve</a>
+
+
+
+
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <div class="col"><a  href="{{ 'backSchool' }}" ><i class="material-icons">present_to_all</i></a></div>
+                </li>
+                <li>
+                    <div class="col"><a  href="{{ 'logout' }}" ><i class="material-icons">power_settings_new</i></a></div>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <h1 class="header center teal-text text-darken-2 ">Applicants' List</h1>
+        <br><br><br>
+
+    </div>
+    <div class="container">
+
+
+        <form action="post" >
+
+
+            <div class="row">
+                {#<div class="col s10">#}
+                <div class="input-field col s6">
+                    <input id="appno" type="search" class="validate" required>
+                    <label for="appno">Application number</label>
+                </div>
+                {#</div>#}
+                {#<div class="col s1">#}
+                <button class="btn-floating btn-large" type="submit" name="action">
+                    <i class="material-icons">search</i>
+                </button>
+
+
+                {#</div>#}
+
+
+            </div>
+        </form>
+        <br><br><br><br>
+        <?php
+        if(applicants!=null){
+
+        ?>
+
+
+        <table>
+            <thead>
+            <tr>
+                <th data-field="id">Application No</th>
+                <th data-field="name">Name of the Applicant</th>
+                {#<th data-field="price">Item Price</th>#}
+            </tr>
+            </thead>
+
+            <tbody>
+            {#<?php#}
+            {#$i=0;#}
+            {#for (i<$applicants)#}
+             {##}
+
+
+             {#?>#}
+
+            <tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+               {#<td>$0.87</td>#}
+            </tr>
+            <tr>
+                <td>Alan</td>
+                <td>Jellybean</td>
+                {#<td>$3.76</td>#}
+            </tr>
+            <tr>
+                <td>Jonathan</td>
+                <td>Lollipop</td>
+                {#<td>$7.00</td>#}
+            </tr>
+            </tbody>
+        </table>
+        <?php
+                }
+        ?>
+        <br><br>
+        <br><br>
+    </div>
+{% endblock %}
