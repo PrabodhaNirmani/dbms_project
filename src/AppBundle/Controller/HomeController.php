@@ -11,38 +11,87 @@ class HomeController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function homeAction(Request $request)
+    public function homeAction()
     {
         // replace this example code with whatever you need
         return $this->render('mine/home.html.twig');
 
     }
     /**
+     * @Route("homeStudent", name="homeStudent")
+     */
+    public function homeStudentAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('mine/homeStudent.html.twig');
+
+    }
+
+    /**
+     * @Route("homeAdmin", name="homeAdmin")
+     */
+    public function homeAdminAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('mine/homeAdmin.html.twig');
+
+    }
+    /**
+     * @Route("homeSchool", name="homeSchool")
+     */
+    public function homeSchoolAction()
+    {
+        // replace this example code with whatever you need
+        return $this->render('mine/homeSchool.html.twig');
+
+    }
+
+    /**
      * @Route("register", name="register")
      */
-    public function registerAction(Request $request)
+    public function registerAction()
     {
         // replace this example code with whatever you need
         return $this->render('mine/register.html.twig');
 
     }
+
     /**
-     * @Route("/lucky")
+     * @Route("edit", name="edit")
      */
-    public function numberAction(Request $request)
+    public function editAction()
     {
-        $number=rand(2,100);
         // replace this example code with whatever you need
-        return $this->render('mine/test.html.twig',array('number'=>$number));
+        return $this->render('mine/editApplication.html.twig');
 
     }
     /**
-     * @Route("about", name="about")
+     * @Route("results", name="results")
      */
-    public function aboutAction(Request $request)
+    public function numberAction()
+    {
+
+        // replace this example code with whatever you need
+        return $this->render('mine/viewResults.html.twig');
+
+    }
+    /**
+     * @Route("search", name="search")
+     */
+    public function aboutAction()
     {
         // replace this example code with whatever you need
-        return $this->render('mine/about.html.twig');
+        return $this->render('mine/searchSchool.html.twig');
+
+    }
+
+    /**
+     * @Route("logout", name="logout")
+     */
+    public function logoutAction()
+    {
+        
+        return $this->render('mine/home.html.twig');
 
     }
 }

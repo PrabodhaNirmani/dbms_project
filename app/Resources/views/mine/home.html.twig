@@ -1,35 +1,40 @@
 {% extends 'base.html.twig' %}
 {% block title %} Home Page{% endblock %}
-
-
-{% block body %}
-
-
+{% block header %}
         <nav class="teal" role="navigation">
-                <div class="nav-wrapper container">
-                        <a id="logo-container" href="#" class="brand-logo">iSolve</a>
+                <div class="nav-wrapper ">
+                        <a id="logo-container" href="#" class="brand-logo left">
+                                <i class="material-icons">visibility</i>iSolve</a>
                         <ul class="right hide-on-med-and-down">
-                                <li><a href="#">Login</a></li>
-                                {#<li><a href="#">Navbar Link1</a></li>#}
+                                <li>
+                                        <ul id="slide-out" class="side-nav">
+                                                <li><div class="userView">
+                                                                <div class="background">
+                                                                        <img src="images/office.jpg">
+                                                                </div>
+                                                                <a href="#!user"><img class="circle" src="images/yuna.jpg"></a>
+                                                                <a href="#!name"><span class="white-text name">John Doe</span></a>
+                                                                <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+                                                        </div></li>
+                                                <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+                                                <li><a href="#!">Second Link</a></li>
+                                                <li><div class="divider"></div></li>
+                                                <li><a class="subheader">Subheader</a></li>
+                                                <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+                                        </ul>
+                                        <a href="#" >Sign in</a></li>
 
                         </ul>
 
-
-
                 </div>
+
         </nav>
 
-        <div id="index-banner" class="parallax-container">
-                <div class="parallax"><img src="bundles/materialize/images/Pic6.png" alt="Unsplashed background img 1"></div>
-        </div>
-        <div class="container">
-                <h1 class="header center teal-text text-darken-2 ">Ministry of Education</h1>
-                <div class="row center">
-                        <h4 class="header col s12 text-darken-4">Grade One Entry Qualification Evaluation System</h4>
-                </div>
 
-        </div>
+{% endblock %}
 
+
+{% block body %}
         <div class="container">
                 <div class="section">
 
@@ -38,12 +43,12 @@
                                 <div class="col s12 m4">
                                         <div class="icon-block">
                                                 <h2 class="center brown-text">
-                                                        <a href="#" data-activates="nav-mobile" class="button-collapse">
+                                                        <a href="{{ 'search' }}" data-activates="nav-mobile" class="wave-button-input teal-text">
                                                                 <i class="material-icons">search</i></a></h2>
                                                 <h5 class="center">
-                                                        <a href="#" data-activates="nav-mobile" class="button-collapse">Search</a></h5>
+                                                        <a href="{{ 'search' }}" data-activates="nav-mobile" class="wave-button-input teal-text">Search</a></h5>
 
-                                                <p class="light">
+                                                <p class="light" align="center">
                                                         Searching schools which are located in a particular district
                                                 </p>
                                         </div>
@@ -52,14 +57,14 @@
                                 <div class="col s12 m4">
                                         <div class="icon-block">
                                                 <h2 class="center brown-text">
-                                                        <a href="#" data-activates="nav-mobile" class="button-collapse">
+                                                        <a href="{{ 'register' }}" data-activates="nav-mobile" class="waves-button-input teal-text">
                                                                 <i class="material-icons">assignment</i></a></h2>
                                                 <h5 class="center">
-                                                        <a href="#" data-activates="nav-mobile" class="button-collapse">
+                                                        <a href="{{ 'register' }}" data-activates="nav-mobile" class="waves-button-input teal-text">
                                                                 Register</a></h5>
 
-                                                <p class="light">
-                                                        Filling new application and editing a submitted application
+                                                <p class="light" align="center">
+                                                        Register students
                                                 </p>
                                         </div>
                                 </div>
@@ -67,12 +72,12 @@
                                 <div class="col s12 m4">
                                         <div class="icon-block">
                                                 <h2 class="center brown-text">
-                                                        <a href="#" data-activates="nav-mobile" class="button-collapse">
+                                                        <a href="{{ 'results' }}" data-activates="nav-mobile" class="waves-button-input teal-text">
                                                                 <i class="material-icons">grade</i></a></h2>
                                                 <h5 class="center">
-                                                        <a href="#" data-activates="nav-mobile" class="button-collapse">Results</a></h5>
+                                                        <a href="{{ 'results' }}" data-activates="nav-mobile" class="waves-button-input teal-text">Results</a></h5>
 
-                                                <p class="light">
+                                                <p class="light" align="center">
                                                         Checking results of grade one entries
                                                 </p>
                                         </div>
@@ -83,45 +88,14 @@
         </div>
 
 
+{% endblock %}
+{% block javascripts %}
+        <script>
 
-
-        <div class="parallax-container valign-wrapper">
-                <div class="parallax"><img src="bundles/materialize/images/Pic5.png" alt="Unsplashed background img 3"></div>
-        </div>
-
-        <footer class="page-footer teal">
-                {#<div class="container">#}
-                        {#<div class="row">#}
-                                {#<div class="col l6 s12">#}
-                                        {#<h5 class="white-text">Company Bio</h5>#}
-                                        {#<p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>#}
-
-
-                                {#</div>#}
-                                {#<div class="col l3 s12">#}
-                                        {#<h5 class="white-text">Settings</h5>#}
-                                        {#<ul>#}
-                                                {#<li><a class="white-text" href="#!">Link 1</a></li>#}
-                                                {#<li><a class="white-text" href="#!">Link 2</a></li>#}
-
-                                        {#</ul>#}
-                                {#</div>#}
-                                {#<div class="col l3 s12">#}
-                                        {#<h5 class="white-text">Connect</h5>#}
-                                        {#<ul>#}
-                                                {#<li><a class="white-text" href="#!">Link 1</a></li>#}
-                                                {#<li><a class="white-text" href="#!">Link 2</a></li>#}
-
-                                        {#</ul>#}
-                                {#</div>#}
-                        {#</div>#}
-                {#</div>#}
-
-                        <div class="container">
-                        <h6 align="right">        iSolve Project by Thirasara Prabodha Saarra Surani</h6>
-                        </div>
-                <br>
-
-        </footer>
+                $(document).ready(function(){
+                        $(".button-collapse").sideNav();
+                        $('.collapsible').collapsible();
+                });
+        </script>
 
 {% endblock %}

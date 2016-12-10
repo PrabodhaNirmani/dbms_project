@@ -1,0 +1,63 @@
+{% extends 'block.html.twig' %}
+
+
+{% block title %} Search Page{% endblock %}
+{% block header %}
+    <nav class="teal" role="navigation">
+        <div class="nav-wrapper ">
+            <a id="logo-container" href="#" class="brand-logo left">
+                <i class="material-icons">visibility</i>iSolve</a>
+            <ul class="right hide-on-med-and-down">
+                <li>
+
+                    <a href="{{ 'logout' }}" ><i class="material-icons">power_settings_new</i></a></li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">#}
+        <h1 class="header center teal-text text-darken-2 ">Search School</h1>
+        <br><br><br>
+
+    </div>
+<div class="container">
+    <div class="row">
+        {#<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Select School</a>#}
+
+        {#<ul id='dropdown1' class="dropdown-content col">#}
+            {#<li >School 1</li>#}
+            {#<li >School 2</li>#}
+            {#<li class="divider"></li>#}
+            {#<li >School 2</li>#}
+        {#</ul>#}
+        <form action="post" >
+
+
+        <div class="input-field col s6">
+            <div class="col s10">
+                <input id="district" type="search" class="validate" placeholder="Enter District" required>
+
+            </div>
+            <div class="col s1">
+
+                <a href="{{ 'logout' }}" class="btn-floating btn-large">
+                    <i class="material-icons">search</i></a>
+
+            </div>
+
+
+        </div>
+        </form>
+    </div>
+    <br><br>
+    <br><br>
+</div>
+{% endblock %}
