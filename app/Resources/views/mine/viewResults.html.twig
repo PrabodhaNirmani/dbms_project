@@ -26,34 +26,35 @@
 
 
 {% block body %}
-    <div class="container">#}
+    <div class="container">
         <h1 class="header center teal-text text-darken-2 ">View Results</h1>
         <br><br><br>
 
     </div>
 
     <div class="container">
-        <div class="row">
-
-            <form action="post" >
+        <form action="post" >
 
 
+            <div class="row">
+                {#<div class="col s10">#}
                 <div class="input-field col s6">
-                    <div class="col s10">
-                        <input id="district" type="search" class="validate" placeholder="Enter District" required>
-
-                    </div>
-                    <div class="col s1">
-
-                        <a href="{{ 'logout' }}" class="btn-floating btn-large">
-                            <i class="material-icons">search</i></a>
-
-                    </div>
-
-
+                    <input id="district" type="search" class="validate" required>
+                    <label for="district">District</label>
                 </div>
-            </form>
-        </div>
+                {#</div>#}
+                {#<div class="col s1">#}
+                <button class="btn-floating btn-large" type="submit" name="action">
+                    <i class="material-icons">search</i>
+                </button>
+
+
+                {#</div>#}
+
+
+            </div>
+        </form>
+
         <br><br>
         <br><br>
     </div>
