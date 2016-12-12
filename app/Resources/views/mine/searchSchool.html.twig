@@ -9,9 +9,12 @@
                 <i class="material-icons">visibility</i>iSolve</a>
             <ul class="right hide-on-med-and-down">
                 <li>
+                    <div class="col"><a  href="{{ 'back' }}" ><i class="material-icons">present_to_all</i></a></div>
+                </li>
 
-                    <a href="{{ 'logout' }}" ><i class="material-icons">power_settings_new</i></a></li>
-
+                <li>
+                    <div class="col"><a  href="{{ 'login' }}" >Sign in</a></div>
+                </li>
             </ul>
 
         </div>
@@ -23,40 +26,36 @@
 
 
 {% block body %}
-    <div class="container">#}
+    <div class="container">
         <h1 class="header center teal-text text-darken-2 ">Search School</h1>
         <br><br><br>
 
     </div>
 <div class="container">
-    <div class="row">
-        {#<a class='dropdown-button btn' href='#' data-activates='dropdown1'>Select School</a>#}
 
-        {#<ul id='dropdown1' class="dropdown-content col">#}
-            {#<li >School 1</li>#}
-            {#<li >School 2</li>#}
-            {#<li class="divider"></li>#}
-            {#<li >School 2</li>#}
-        {#</ul>#}
+
         <form action="post" >
 
 
-        <div class="input-field col s6">
-            <div class="col s10">
-                <input id="district" type="search" class="validate" placeholder="Enter District" required>
-
+        <div class="row">
+            {#<div class="col s10">#}
+            <div class="input-field col s6">
+                <input id="district" type="search" class="validate" required>
+                <label for="district">District</label>
             </div>
-            <div class="col s1">
+            {#</div>#}
+            {#<div class="col s1">#}
+            <button class="btn-floating btn-large" type="submit" name="action">
+                <i class="material-icons">search</i>
+            </button>
 
-                <a href="{{ 'logout' }}" class="btn-floating btn-large">
-                    <i class="material-icons">search</i></a>
 
-            </div>
+            {#</div>#}
 
 
         </div>
         </form>
-    </div>
+
     <br><br>
     <br><br>
 </div>

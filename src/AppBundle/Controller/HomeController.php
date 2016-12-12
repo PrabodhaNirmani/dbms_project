@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class HomeController extends Controller
 {
@@ -90,8 +91,28 @@ class HomeController extends Controller
      */
     public function logoutAction()
     {
-        
-        return $this->render('mine/home.html.twig');
+
+        return $this->homeAction();
 
     }
+    /**
+     * @Route("login", name="login")
+     */
+    public function loginAction()
+    {
+
+        return $this->render('mine/login.html.twig');
+
+    }
+    /**
+     * @Route("back", name="back")
+     */
+    public function backAction(Request $request )
+    {
+       return $this->homeAction();
+
+
+    }
+
+
 }
