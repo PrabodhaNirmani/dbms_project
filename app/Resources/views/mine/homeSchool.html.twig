@@ -1,1 +1,73 @@
-School Home
+{% extends 'base.html.twig' %}
+{% block title %} Home Page{% endblock %}
+{% block header %}
+    {% include 'header/headerSchool.html.twig' %}
+
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="section">
+
+            <!--   Icon Section   -->
+            <div class="row">
+                {#<div class="col s12 m4">#}
+                    {#<div class="icon-block">#}
+                        {#<h2 class="center brown-text">#}
+                            {#<a href="#" data-activates="nav-mobile" class="wave-button-input teal-text">#}
+                                {#<i class="material-icons">search</i></a></h2>#}
+                        {#<h5 class="center">#}
+                            {#<a href="#" data-activates="nav-mobile" class="wave-button-input teal-text">Confirmation</a></h5>#}
+
+                        {#<p class="light" align="center">#}
+                        {#Updating and Confirming application forms of applicants#}
+                        {#</p>#}
+                    {#</div>#}
+                {#</div>#}
+
+                <div class="col s12 m6">
+                    <div class="icon-block">
+                        <h2 class="center brown-text">
+                            <a href="{{ 'viewApplicants' }}" data-activates="nav-mobile" class="waves-button-input teal-text">
+                                <i class="material-icons">assignment</i></a></h2>
+                        <h5 class="center">
+                            <a href="{{ 'viewApplicants' }}" data-activates="nav-mobile" class="waves-button-input teal-text">
+                                Applicants</a></h5>
+
+                        <p class="light" align="center">
+                            Viewing applicants who choose the school in his preference list
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="icon-block">
+                        <h2 class="center brown-text">
+                            <a href="{{ 'updateVacancies' }}" data-activates="nav-mobile" class="waves-button-input teal-text">
+                                <i class="material-icons">system_update_alt</i></a></h2>
+                        <h5 class="center">
+                            <a href="{{ 'updateVacancies' }}" data-activates="nav-mobile" class="waves-button-input teal-text">Update</a></h5>
+
+                        <p class="light" align="center">
+                            Updating the number of vacancies left for the school in this year
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function(){
+            $(".button-collapse").sideNav();
+            $('.collapsible').collapsible();
+        });
+    </script>
+
+{% endblock %}
