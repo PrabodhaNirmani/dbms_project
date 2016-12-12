@@ -1,28 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %} Home Page{% endblock %}
 {% block header %}
-    <nav class="teal" role="navigation">
-        <div class="nav-wrapper ">
-            <a id="logo-container" href="#" class="brand-logo left">
-                <i class="material-icons">visibility</i>iSolve</a>
-
-
-
-
-            <ul class="right hide-on-med-and-down">
-                {#<li>#}
-                {#<div class="col"><a  href="{{ 'back' }}" ><i class="material-icons">present_to_all</i></a></div>#}
-                {#</li>#}
-
-                <li>
-                    <div class="col"><a  href="{{ 'logout' }}" ><i class="material-icons">power_settings_new</i></a></div>
-                </li>
-            </ul>
-
-        </div>
-
-    </nav>
-
+    {% include 'header/headerSchool.html.twig' %}
 
 {% endblock %}
 

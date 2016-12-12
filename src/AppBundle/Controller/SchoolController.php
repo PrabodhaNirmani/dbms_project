@@ -22,8 +22,8 @@ class SchoolController extends Controller
      */
     public function schoolHomeAction()
     {
-        $applicants=null;
-        return $this->render('mine/homeSchool.html.twig',array('applicants'=>$applicants));
+        
+        return $this->render('mine/homeSchool.html.twig');
 
 
     }
