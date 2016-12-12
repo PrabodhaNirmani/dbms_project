@@ -2,22 +2,15 @@
 
 namespace AppBundle\Controller;
 
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+include("CustomConnection.php");
 
 class HomeController extends Controller
 {
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function homeAction()
-    {
-        // replace this example code with whatever you need
-        return $this->render('mine/home.html.twig');
-
-    }
     /**
      * @Route("homeStudent", name="homeStudent")
      */
@@ -37,6 +30,7 @@ class HomeController extends Controller
         return $this->render('mine/homeAdmin.html.twig');
 
     }
+
     /**
      * @Route("homeSchool", name="homeSchool")
      */
@@ -66,6 +60,7 @@ class HomeController extends Controller
         return $this->render('mine/editApplication.html.twig');
 
     }
+
     /**
      * @Route("results", name="results")
      */
@@ -76,6 +71,7 @@ class HomeController extends Controller
         return $this->render('mine/viewResults.html.twig');
 
     }
+
     /**
      * @Route("search", name="search")
      */
@@ -95,6 +91,21 @@ class HomeController extends Controller
         return $this->homeAction();
 
     }
+
+    /**
+     * @Route("/", name="homepage")
+     */
+    public function homeAction()
+    {
+
+        $con = db_connect();
+       // mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('siar4ah','fe','admin')");
+
+        // replace this example code with whatever you need
+        return $this->render('mine/home.html.twig');
+
+    }
+
     /**
      * @Route("login", name="login")
      */
@@ -104,12 +115,13 @@ class HomeController extends Controller
         return $this->render('mine/login.html.twig');
 
     }
+
     /**
      * @Route("back", name="back")
      */
-    public function backAction(Request $request )
+    public function backAction(Request $request)
     {
-       return $this->homeAction();
+        return $this->homeAction();
 
 
     }
