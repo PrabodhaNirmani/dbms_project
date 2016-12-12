@@ -18,4 +18,14 @@ class StudentController extends Controller
 
 
     }
+    /**
+     * @Route("apply", name="apply")
+     */
+    public function applyAction()
+    {
+
+        return $this->render('mine/application.html.twig');
+
+
+    }
 }
