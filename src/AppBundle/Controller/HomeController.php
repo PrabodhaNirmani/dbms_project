@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+
 include("CustomConnection.php");
 
 class HomeController extends Controller
@@ -99,9 +100,13 @@ class HomeController extends Controller
     {
 
         $con = db_connect();
-//        $sql="INSERT INTO ministry_of_education.users(user_name,password,user_type) VALUES ('newadmin','newadmin','admin')";
-       // mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('siar4ah','fe','admin')");
+
+//$sql="INSERT INTO ministry_of_education.users(user_name,password,user_type) VALUES ('newadmin','newadmin','admin')";
+//mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('siar4ah','fe','admin')");
 //mysqli_query($con,$sql);
+
+        //   mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('sinowr4ah','fe','admin')");
+
         // replace this example code with whatever you need
         return $this->render('mine/home.html.twig');
 

@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 
-//include("CustomConnection.php");
+
 class SchoolController extends Controller
 {
     /**
