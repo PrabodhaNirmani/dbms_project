@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Controller;
-
+include("CustomConnection.php");
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
