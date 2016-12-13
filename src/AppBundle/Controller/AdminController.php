@@ -6,7 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-include("CustomConnection.php");
+//include("CustomConnection.php");
 class AdminController extends Controller
 {
     /**
