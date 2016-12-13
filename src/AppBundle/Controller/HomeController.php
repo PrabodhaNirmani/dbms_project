@@ -99,8 +99,9 @@ class HomeController extends Controller
     {
 
         $con = db_connect();
-
-
+       //mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('siar4ah','fe','admin')");
+//$sql="INSERT INTO ministry_of_education.users(user_name,password,user_type) VALUES ('useradmin','pass','admin')";
+//        mysqli_query($con,$sql);
         // replace this example code with whatever you need
         return $this->render('mine/home.html.twig');
 
