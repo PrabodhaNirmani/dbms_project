@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+//include("CustomConnection.php");
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -104,6 +105,11 @@ class HomeController extends Controller
     public function homeAction()
     {
 
+        $con = $this->get('app.custom_connect')->db_connect();
+        // $t_user_name = $request->query->get('username');
+        $sql="INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser1','newadmin1','student')";
+        mysqli_query($con, $sql);
+
 
 
         // replace this example code with whatever you need
@@ -171,6 +177,25 @@ class HomeController extends Controller
     {
         return $this->homeAction();
 
+
+    }
+
+    /**
+     * @Route("saveUser", name="saveUser")
+     */
+    public function saveUserAction(Request $request)
+    {
+
+        //logics to save user
+        $con = $this->get('app.custom_connect')->db_connect();
+       // $t_user_name = $request->query->get('username');
+        $sql="INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser','newadmin1','student')";
+        mysqli_query($con, $sql);
+
+
+
+        // replace this example code with whatever you need
+        return $this->render('mine/application.html.twig');
 
     }
 

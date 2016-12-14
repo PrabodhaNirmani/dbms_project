@@ -7,14 +7,18 @@
  * Time: 1:06 AM
  */
 
-function db_connect()
+
+namespace AppBundle\Persistence;
+
+class CustomConnection{
+public function db_connect()
 
 {
     $server_name = "localhost";
     $username = "root";
-    $password = "";
-    $db="ministry_of_education";
-    $conn = new mysqli($server_name, $username, $password,$db);
+    $password = "";    $db="ministry_of_education";
+    $conn = new \mysqli($server_name, $username, $password,$db);
+
 
 // Check connection
     if ($conn->connect_error) {
@@ -25,5 +29,5 @@ function db_connect()
 //echo "Connected successfully";
 
 //mysqli_query($conn,"INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('sdsds','efe','admin')");
-}
+}}
 
