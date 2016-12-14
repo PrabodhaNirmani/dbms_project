@@ -8,7 +8,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-include("CustomConnection.php");
+
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+
 
 class HomeController extends Controller
 {
@@ -99,13 +104,7 @@ class HomeController extends Controller
     public function homeAction()
     {
 
-        $con = db_connect();
 
-//$sql="INSERT INTO user(user_name,password,user_type) VALUES ('newadmin','newadmin','admin')";
-//mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('siar4ah','fe','admin')");
-//mysqli_query($con,$sql);
-
-        //   mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('sinowr4ah','fe','admin')");
 
         // replace this example code with whatever you need
         return $this->render('mine/home.html.twig');
@@ -115,10 +114,53 @@ class HomeController extends Controller
     /**
      * @Route("login", name="login")
      */
-    public function loginAction()
+    public function loginAction(Request $request)
     {
+        $form = $this->createFormBuilder()
+            ->add('username', TextType::class)
+            ->add('password', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Submit'))
+            ->getForm();
+        $form->handleRequest($request);
 
-        return $this->render('mine/login.html.twig');
+        if ($form->isSubmitted() && $form->isValid()) {
+            $username=$form['username']->getData();
+            $password=$form['password']->getData();
+
+            $sql="SELECT * FROM user WHERE user_name='$username' and password='$password'";
+            $connection=db_connect();
+            $val=mysqli_query($connection,$sql);
+
+            if(mysqli_num_rows($val)){
+
+
+                while($row=mysqli_fetch_row($val)){
+
+                    $type=$row[2];
+
+                    if($type='student'){
+
+
+                        return $this->render('mine/homeAdmin.html.twig');
+
+                    }
+                    elseif ($type='student'){
+                        return $this->render('mine/homeStudent.html.twig');
+                    }
+                    elseif ($type='school'){
+                        return $this->render('mine/homeSchool.html.twig');
+                    }
+                }
+
+            }
+            return $this->render('mine/application.html.twig');
+
+
+
+        }
+        return $this->render('mine/login.html.twig', array(
+            'form' => $form->createView(),
+        ));
 
     }
 
