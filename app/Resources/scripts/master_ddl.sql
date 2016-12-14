@@ -1,22 +1,34 @@
-DROP 	DATABASE IF EXISTS `ministry_of_education`;
+DROP DATABASE IF EXISTS `ministry_of_education`;
 
 CREATE DATABASE ministry_of_education;
 
-USE ministry_of_education; 
+USE ministry_of_education;
 
-CREATE TABLE applicant 
-  ( 
-     applicant_id INT NOT NULL auto_increment PRIMARY KEY, 
-     first_name   VARCHAR(255) NOT NULL, 
-     last_name    VARCHAR(255), 
-     sex          VARCHAR(6) NOT NULL, 
-     medium       VARCHAR(7) NOT NULL, 
-     religion     VARCHAR(12) NOT NULL, 
-     birth_day    DATE NOT NULL, 
-     age          DATE NOT NULL 
+CREATE TABLE user
+  (
+     user_id   INT NOT NULL auto_increment PRIMARY KEY,
+     user_name VARCHAR(255) NOT NULL,
+     password  VARCHAR(255) NOT NULL,
+     user_type VARCHAR(10) NOT NULL,
+     UNIQUE (user_name, password)
   )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8;
+
+CREATE TABLE applicant
+  (
+     applicant_id INT NOT NULL PRIMARY KEY,
+     first_name   VARCHAR(255) NOT NULL,
+     last_name    VARCHAR(255),
+     sex          VARCHAR(6) NOT NULL,
+     medium       VARCHAR(7) NOT NULL,
+     religion     VARCHAR(12) NOT NULL,
+     birth_day    DATE NOT NULL,
+     age          DATE NOT NULL,
+     FOREIGN KEY(applicant_id) REFERENCES user(user_id) ON DELETE CASCADE
+  )
+engine = innodb
+DEFAULT charset = utf8;
 
 CREATE TABLE applicant_guardian
   (
@@ -37,19 +49,20 @@ CREATE TABLE applicant_guardian
      FOREIGN KEY(applicant_id) REFERENCES applicant(applicant_id) ON DELETE
      CASCADE
   )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8;
 
 CREATE TABLE school
   (
-     school_id      INT NOT NULL auto_increment PRIMARY KEY,
+     school_id      INT NOT NULL PRIMARY KEY,
      school_name    VARCHAR(50) NOT NULL,
      street         VARCHAR(50),
      city           VARCHAR(20) NOT NULL,
-     max_no_student INT NOT NULL
+     max_no_student INT,
+     FOREIGN KEY(school_id) REFERENCES user(user_id) ON DELETE CASCADE
   )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8;
 
 CREATE TABLE applicant_priority
   (
@@ -62,10 +75,10 @@ CREATE TABLE applicant_priority
      FOREIGN KEY(applicant_id) REFERENCES applicant(applicant_id) ON DELETE
      CASCADE,
      FOREIGN KEY(school_id) REFERENCES school(school_id) ON DELETE CASCADE,
-     UNIQUE(applicant_id, priority)
+     UNIQUE (applicant_id, priority)
   )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8;
 
 CREATE TABLE student
   (
@@ -74,52 +87,43 @@ CREATE TABLE student
      last_name       VARCHAR(255),
      registered_date DATE
   )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8;
 
 CREATE TABLE present_student
   (
-     present_stu_id INT NOT NULL PRIMARY KEY REFERENCES student(admission_no)
+     present_stu_id INT NOT NULL PRIMARY KEY REFERENCES student (admission_no)
   )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8;
 
 CREATE TABLE past_student
   (
-     past_stu_id      INT NOT NULL PRIMARY KEY REFERENCES student(admission_no),
+     past_stu_id      INT NOT NULL PRIMARY KEY REFERENCES student (admission_no)
+     ,
      membership_id    INT NOT NULL,
      school_left_date DATE,
      membership_date  DATE
   )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8;
 
 CREATE TABLE applicant_sibling
   (
      applicant_id   INT NOT NULL,
-     present_stu_id INT NOT NULL,
-     FOREIGN KEY (applicant_id) REFERENCES applicant(applicant_id),
-     FOREIGN KEY (present_stu_id) REFERENCES present_student(present_stu_id)
+     present_stu_id INT NOT NULL REFERENCES present_student (present_stu_id),
+     FOREIGN KEY (applicant_id) REFERENCES applicant (applicant_id) ON DELETE
+     CASCADE
   )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8;
 
 CREATE TABLE guardian_past_pupil
   (
      guardian_id INT NOT NULL,
      past_stu_id INT NOT NULL,
-     FOREIGN KEY (guardian_id) REFERENCES applicant_guardian(guardian_id),
-     FOREIGN KEY (past_stu_id) REFERENCES past_student(past_stu_id)
+     FOREIGN KEY(guardian_id) REFERENCES applicant_guardian(guardian_id),
+     FOREIGN KEY(past_stu_id) REFERENCES past_student(past_stu_id)
   )
-engine=innodb
-DEFAULT charset=utf8;
-
-CREATE TABLE user
-  (
-     user_name VARCHAR(255) NOT NULL,
-     password  VARCHAR(255) NOT NULL,
-     user_type VARCHAR(10) NOT NULL,
-     UNIQUE (user_name, password)
-  )
-engine=innodb
-DEFAULT charset=utf8;
+engine = innodb
+DEFAULT charset = utf8; 

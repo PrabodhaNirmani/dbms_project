@@ -129,7 +129,6 @@ class HomeController extends Controller
     {
         // replace this example code with whatever you need
         return $this->render('mine/searchSchool.html.twig');
-
     }
 
     /**
@@ -137,9 +136,7 @@ class HomeController extends Controller
      */
     public function logoutAction()
     {
-
         return $this->homeAction();
-
     }
 
     /**
@@ -147,16 +144,13 @@ class HomeController extends Controller
      */
     public function homeAction()
     {
-
         $con = $this->get('app.custom_connect')->db_connect();
         // $t_user_name = $request->query->get('username');
         $sql = "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser1','newadmin1','student')";
         mysqli_query($con, $sql);
 
-
         // replace this example code with whatever you need
         return $this->render('mine/home.html.twig');
-
     }
 
     /**
@@ -180,33 +174,22 @@ class HomeController extends Controller
             $val = mysqli_query($connection, $sql);
 
             if (mysqli_num_rows($val)) {
-
-
                 while ($row = mysqli_fetch_row($val)) {
-
                     $type = $row[2];
-
                     if ($type = 'student') {
-
-
                         return $this->render('mine/homeAdmin.html.twig');
-
                     } elseif ($type = 'student') {
                         return $this->render('mine/homeStudent.html.twig');
                     } elseif ($type = 'school') {
                         return $this->render('mine/homeSchool.html.twig');
                     }
                 }
-
             }
             return $this->render('mine/application.html.twig');
-
-
         }
         return $this->render('mine/login.html.twig', array(
             'form' => $form->createView(),
         ));
-
     }
 
     /**
@@ -215,8 +198,6 @@ class HomeController extends Controller
     public function backAction(Request $request)
     {
         return $this->homeAction();
-
-
     }
 
     /**
@@ -224,18 +205,13 @@ class HomeController extends Controller
      */
     public function saveUserAction(Request $request)
     {
-
         //logics to save user
         $con = $this->get('app.custom_connect')->db_connect();
         // $t_user_name = $request->query->get('username');
         $sql = "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser','newadmin1','student')";
         mysqli_query($con, $sql);
 
-
         // replace this example code with whatever you need
         return $this->render('mine/application.html.twig');
-
     }
-
-
 }
