@@ -67,27 +67,7 @@ class HomeController extends Controller
             $sql = "INSERT INTO  user (user_name,password,user_type) VALUES ('.$username.','.$password.','student')";
             $connection = $this->get('app.custom_connect')->db_connect();
             $val = mysqli_query($connection, $sql);
-//
-//            if (mysqli_num_rows($val)) {
-//
-//
-//                while ($row = mysqli_fetch_row($val)) {
-//
-//                    $type = $row[2];
-//
-//                    if ($type = 'student') {
-//
-//
-//                        return $this->render('mine/homeAdmin.html.twig');
-//
-//                    } elseif ($type = 'student') {
-//                        return $this->render('mine/homeStudent.html.twig');
-//                    } elseif ($type = 'school') {
-//                        return $this->render('mine/homeSchool.html.twig');
-//                    }
-//                }
 
-//            }
             return $this->render('mine/application.html.twig');
 
 
@@ -146,7 +126,7 @@ class HomeController extends Controller
     {
         $con = $this->get('app.custom_connect')->db_connect();
         // $t_user_name = $request->query->get('username');
-        $sql = "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser1','newadmin1','student')";
+        $sql = "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser1','newadmin1','admin')";
         mysqli_query($con, $sql);
 
         // replace this example code with whatever you need
@@ -175,17 +155,21 @@ class HomeController extends Controller
 
             if (mysqli_num_rows($val)) {
                 while ($row = mysqli_fetch_row($val)) {
-                    $type = $row[2];
-                    if ($type = 'student') {
+                    $type = $row[3];
+//echo $type;
+                    if ($type === 'admin') {
                         return $this->render('mine/homeAdmin.html.twig');
-                    } elseif ($type = 'student') {
+                    } elseif ($type === 'student') {
                         return $this->render('mine/homeStudent.html.twig');
-                    } elseif ($type = 'school') {
+                    } elseif ($type === 'school') {
                         return $this->render('mine/homeSchool.html.twig');
                     }
                 }
             }
-            return $this->render('mine/application.html.twig');
+            else{
+                return $this->homeAction();
+            }
+
         }
         return $this->render('mine/login.html.twig', array(
             'form' => $form->createView(),
