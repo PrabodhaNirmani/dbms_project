@@ -8,12 +8,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-//include("CustomConnection.php");
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
 
 
 class HomeController extends Controller
@@ -107,9 +105,8 @@ class HomeController extends Controller
 
         $con = $this->get('app.custom_connect')->db_connect();
         // $t_user_name = $request->query->get('username');
-        $sql="INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser1','newadmin1','student')";
+        $sql = "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser1','newadmin1','student')";
         mysqli_query($con, $sql);
-
 
 
         // replace this example code with whatever you need
@@ -130,37 +127,34 @@ class HomeController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $username=$form['username']->getData();
-            $password=$form['password']->getData();
+            $username = $form['username']->getData();
+            $password = $form['password']->getData();
 
-            $sql="SELECT * FROM user WHERE user_name='$username' and password='$password'";
-            $connection=db_connect();
-            $val=mysqli_query($connection,$sql);
+            $sql = "SELECT * FROM user WHERE user_name='$username' and password='$password'";
+            $connection = db_connect();
+            $val = mysqli_query($connection, $sql);
 
-            if(mysqli_num_rows($val)){
+            if (mysqli_num_rows($val)) {
 
 
-                while($row=mysqli_fetch_row($val)){
+                while ($row = mysqli_fetch_row($val)) {
 
-                    $type=$row[2];
+                    $type = $row[2];
 
-                    if($type='student'){
+                    if ($type = 'student') {
 
 
                         return $this->render('mine/homeAdmin.html.twig');
 
-                    }
-                    elseif ($type='student'){
+                    } elseif ($type = 'student') {
                         return $this->render('mine/homeStudent.html.twig');
-                    }
-                    elseif ($type='school'){
+                    } elseif ($type = 'school') {
                         return $this->render('mine/homeSchool.html.twig');
                     }
                 }
 
             }
             return $this->render('mine/application.html.twig');
-
 
 
         }
@@ -188,10 +182,9 @@ class HomeController extends Controller
 
         //logics to save user
         $con = $this->get('app.custom_connect')->db_connect();
-       // $t_user_name = $request->query->get('username');
-        $sql="INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser','newadmin1','student')";
+        // $t_user_name = $request->query->get('username');
+        $sql = "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser','newadmin1','student')";
         mysqli_query($con, $sql);
-
 
 
         // replace this example code with whatever you need

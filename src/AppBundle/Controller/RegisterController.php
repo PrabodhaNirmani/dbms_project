@@ -14,11 +14,12 @@ class AdminController extends Controller
      */
     public function registerStudentAction()
     {
-        
+
         return $this->render('mine/application.html.twig');
 
 
     }
+
     /**
      * @Route("backAdmin", name="backAdmin")
      */
