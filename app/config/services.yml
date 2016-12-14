@@ -7,3 +7,8 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+# app/config/services.yml
+
+    # keep your service names short
+    app.custom_connect:
+        class: AppBundle\Persistence\CustomConnection

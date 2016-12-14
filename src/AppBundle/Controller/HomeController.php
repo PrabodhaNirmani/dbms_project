@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-include("CustomConnection.php");
+//include("CustomConnection.php");
 
 class HomeController extends Controller
 {
@@ -99,9 +99,18 @@ class HomeController extends Controller
     public function homeAction()
     {
 
-        $con = db_connect();
+        $con = $this->get('app.custom_connect')->db_connect();
+        // $t_user_name = $request->query->get('username');
+        $sql="INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser','newadmin1','student')";
+        mysqli_query($con, $sql);
 
+<<<<<<< HEAD
 //$sql="INSERT INTO user(user_name,password,user_type) VALUES ('newadmin','newadmin','admin')";
+=======
+      //  $con = db_connect();
+
+         //$sql="INSERT INTO ministry_of_education.users(user_name,password,user_type) VALUES ('newadmin','newadmin','admin')";
+>>>>>>> Added CustomConnection to a new directory - Persistence
 //mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('siar4ah','fe','admin')");
 //mysqli_query($con,$sql);
 
@@ -129,6 +138,25 @@ class HomeController extends Controller
     {
         return $this->homeAction();
 
+
+    }
+
+    /**
+     * @Route("saveUser", name="saveUser")
+     */
+    public function saveUserAction(Request $request)
+    {
+
+        //logics to save user
+        $con = $this->get('app.custom_connect')->db_connect();
+       // $t_user_name = $request->query->get('username');
+        $sql="INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser','newadmin1','student')";
+        mysqli_query($con, $sql);
+
+
+
+        // replace this example code with whatever you need
+        return $this->render('mine/application.html.twig');
 
     }
 
