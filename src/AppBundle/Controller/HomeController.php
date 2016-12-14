@@ -131,7 +131,7 @@ class HomeController extends Controller
             $password = $form['password']->getData();
 
             $sql = "SELECT * FROM user WHERE user_name='$username' and password='$password'";
-            $connection = db_connect();
+            $connection = $this->get('app.custom_connect')->db_connect();
             $val = mysqli_query($connection, $sql);
 
             if (mysqli_num_rows($val)) {
