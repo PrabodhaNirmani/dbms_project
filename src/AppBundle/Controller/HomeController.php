@@ -101,20 +101,10 @@ class HomeController extends Controller
 
         $con = $this->get('app.custom_connect')->db_connect();
         // $t_user_name = $request->query->get('username');
-        $sql="INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser','newadmin1','student')";
+        $sql="INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('NewUser1','newadmin1','student')";
         mysqli_query($con, $sql);
 
-<<<<<<< HEAD
-//$sql="INSERT INTO user(user_name,password,user_type) VALUES ('newadmin','newadmin','admin')";
-=======
-      //  $con = db_connect();
 
-         //$sql="INSERT INTO ministry_of_education.users(user_name,password,user_type) VALUES ('newadmin','newadmin','admin')";
->>>>>>> Added CustomConnection to a new directory - Persistence
-//mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('siar4ah','fe','admin')");
-//mysqli_query($con,$sql);
-
-        //   mysqli_query($con, "INSERT INTO ministry_of_education.user(user_name,password,user_type) VALUES ('sinowr4ah','fe','admin')");
 
         // replace this example code with whatever you need
         return $this->render('mine/home.html.twig');

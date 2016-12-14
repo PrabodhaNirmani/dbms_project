@@ -17,10 +17,8 @@ public function db_connect()
     $server_name = "localhost";
     $username = "root";
     $password = "";    $db="ministry_of_education";
-    $conn = new mysqli($server_name, $username, $password,$db);
+    $conn = new \mysqli($server_name, $username, $password,$db);
 
-
-    $conn = new \mysqli($server_name, $username, $password);
 
 // Check connection
     if ($conn->connect_error) {
