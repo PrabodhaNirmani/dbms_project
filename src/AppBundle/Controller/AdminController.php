@@ -14,8 +14,6 @@ class AdminController extends Controller
      */
     public function registerSchoolAction(Request $request)
     {
-
-
         $form = $this->createFormBuilder()
             ->add('schoolname', TextType::class)
             ->add('street', TextType::class)

@@ -165,9 +165,8 @@ class HomeController extends Controller
                         return $this->render('mine/homeSchool.html.twig');
                     }
                 }
-            }
-            else{
-                return $this->homeAction();
+            } else {
+                return $this->redirect('login');
             }
 
         }
