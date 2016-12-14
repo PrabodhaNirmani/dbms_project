@@ -13,8 +13,8 @@ function db_connect()
     $server_name = "localhost";
     $username = "root";
     $password = "";
-
-    $conn = new mysqli($server_name, $username, $password);
+    $db="ministry_of_education";
+    $conn = new mysqli($server_name, $username, $password,$db);
 
 // Check connection
     if ($conn->connect_error) {
