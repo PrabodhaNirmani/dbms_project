@@ -12,43 +12,47 @@
 {% block body %}
     <div class="container">
     <h1 class="header center teal-text text-darken-2">Student Registration Form</h1>
+        {{ form_start(form) }}
 
-    <div class="row">
-        <form class="col s12" action="saveUser">
-            <div class="row">
-                <div class="input-field col s6">
-                    <input  id="first_name" type="text" class="validate" required>
-                    <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="last_name" type="text" class="validate" required>
-                    <label for="last_name">Last Name</label>
-                </div>
-            </div>
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
 
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="username" name="username" type="text" class="validate" required>
-                    <label for="username">Username</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" type="password" class="validate" required>
-                    <label for="password">Password</label>
-                </div>
-            </div>
+    {#<div class="row">#}
+        {#<form class="col s12" action="saveUser">#}
+            {#<div class="row">#}
+                {#<div class="input-field col s6">#}
+                    {#<input  id="first_name" type="text" class="validate" required>#}
+                    {#<label for="first_name">First Name</label>#}
+                {#</div>#}
+                {#<div class="input-field col s6">#}
+                    {#<input id="last_name" type="text" class="validate" required>#}
+                    {#<label for="last_name">Last Name</label>#}
+                {#</div>#}
+            {#</div>#}
+
+            {#<div class="row">#}
+                {#<div class="input-field col s6">#}
+                    {#<input id="username" name="username" type="text" class="validate" required>#}
+                    {#<label for="username">Username</label>#}
+                {#</div>#}
+            {#</div>#}
+            {#<div class="row">#}
+                {#<div class="input-field col s12">#}
+                    {#<input id="password" type="password" class="validate" required>#}
+                    {#<label for="password">Password</label>#}
+                {#</div>#}
+            {#</div>#}
             {#<div class="row">#}
                 {#<div class="input-field col s12">#}
                     {#<input id="email" type="email" class="validate">#}
                     {#<label for="email">Email</label>#}
                 {#</div>#}
             {#</div>#}
-            <button class="btn waves-effect waves-light" type="submit" >Submit
-                <i class="material-icons right">send</i>
-            </button>
-        </form>
-    </div>
+            {#<button class="btn waves-effect waves-light" type="submit" >Submit#}
+                {#<i class="material-icons right">send</i>#}
+            {#</button>#}
+        {#</form>#}
+    {#</div>#}
 
         <br><br><br>
     </div>

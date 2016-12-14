@@ -49,10 +49,55 @@ class HomeController extends Controller
     /**
      * @Route("register", name="register")
      */
-    public function registerAction()
+    public function registerAction(Request $request)
     {
+
+        $form = $this->createFormBuilder()
+            ->add('username', TextType::class)
+            ->add('password', TextType::class)
+            ->add('confPassword', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Submit'))
+            ->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $username = $form['username']->getData();
+            $password = $form['password']->getData();
+
+            $sql = "INSERT INTO  user (user_name,password,user_type) VALUES ('.$username.','.$password.','student')";
+            $connection = $this->get('app.custom_connect')->db_connect();
+            $val = mysqli_query($connection, $sql);
+//
+//            if (mysqli_num_rows($val)) {
+//
+//
+//                while ($row = mysqli_fetch_row($val)) {
+//
+//                    $type = $row[2];
+//
+//                    if ($type = 'student') {
+//
+//
+//                        return $this->render('mine/homeAdmin.html.twig');
+//
+//                    } elseif ($type = 'student') {
+//                        return $this->render('mine/homeStudent.html.twig');
+//                    } elseif ($type = 'school') {
+//                        return $this->render('mine/homeSchool.html.twig');
+//                    }
+//                }
+
+//            }
+            return $this->render('mine/application.html.twig');
+
+
+        }
+        return $this->render('mine/register.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
         // replace this example code with whatever you need
-        return $this->render('mine/register.html.twig');
+//        return $this->render('mine/register.html.twig');
 
     }
 
