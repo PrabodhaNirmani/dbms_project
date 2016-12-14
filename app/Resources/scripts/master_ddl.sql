@@ -114,7 +114,7 @@ CREATE TABLE guardian_past_pupil
 engine=innodb
 DEFAULT charset=utf8;
 
-CREATE TABLE users
+CREATE TABLE user
   (
      user_name VARCHAR(255) NOT NULL,
      password  VARCHAR(255) NOT NULL,
