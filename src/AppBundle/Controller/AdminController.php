@@ -5,6 +5,11 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+
 
 //include("CustomConnection.php");
 class AdminController extends Controller
@@ -29,17 +34,22 @@ class AdminController extends Controller
             $username = $form['username']->getData();
             $password = $form['password']->getData();
 
-            $sql1 = "INSERT INTO  user (user_name,password,user_type) VALUES ($username,$password,'school')";
+            $sql1 = "INSERT INTO  ministry_of_education.user(user_name,password,user_type) VALUES ('$username','$password','school')";
             $connection = $this->get('app.custom_connect')->db_connect();
             $val = mysqli_query($connection, $sql1);
 
             $schoolname = $form['schoolname']->getData();
             $street = $form['street']->getData();
             $city = $form['city']->getData();
-            $sql2 = "INSERT INTO  school (user_name,password,user_type) VALUES ($username,$password,'school')";
+            $sam="SELECT user_id FROM user where user_name='.$username.' AND password='.$password'";
+            $val2 = mysqli_query($connection, $sam);
+            $row=mysqli_fetch_row($val2);
 
 
-            return $this->render('mine/application.html.twig');
+            $sql2 = "INSERT INTO  ministry_of_education.school(school_id,school_name,street,city) VALUES ('$row[0]','$schoolname','$street','$city')";
+            $val = mysqli_query($connection, $sql2);
+
+            return $this->redirect('registerSchool');
 
 
         }
