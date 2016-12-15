@@ -138,43 +138,54 @@ class HomeController extends Controller
      */
     public function loginAction(Request $request)
     {
-        $form = $this->createFormBuilder()
-            ->add('username', TextType::class)
-            ->add('password', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Submit'))
-            ->getForm();
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $username = $form['username']->getData();
-            $password = $form['password']->getData();
-
-            $sql = "SELECT * FROM user WHERE user_name='$username' and password='$password'";
-            $connection = $this->get('app.custom_connect')->db_connect();
-            $val = mysqli_query($connection, $sql);
-
-            if (mysqli_num_rows($val)) {
-                while ($row = mysqli_fetch_row($val)) {
-                    $type = $row[3];
-//echo $type;
-                    if ($type === 'admin') {
-                        return $this->render('mine/homeAdmin.html.twig');
-                    } elseif ($type === 'student') {
-                        return $this->render('mine/homeStudent.html.twig');
-                    } elseif ($type === 'school') {
-                        return $this->render('mine/homeSchool.html.twig');
-                    }
-                }
-            } else {
-                return $this->redirect('login');
-            }
-
-        }
-        return $this->render('mine/login.html.twig', array(
-            'form' => $form->createView(),
-        ));
+//        $form = $this->createFormBuilder()
+//            ->add('username', TextType::class)
+//            ->add('password', TextType::class)
+//            ->add('save', SubmitType::class, array('label' => 'Submit'))
+//            ->getForm();
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $username = $form['username']->getData();
+//            $password = $form['password']->getData();
+//
+//            $sql = "SELECT * FROM user WHERE user_name='$username' and password='$password'";
+//            $connection = $this->get('app.custom_connect')->db_connect();
+//            $val = mysqli_query($connection, $sql);
+//
+//            if (mysqli_num_rows($val)) {
+//                while ($row = mysqli_fetch_row($val)) {
+//                    $type = $row[3];
+////echo $type;
+//                    if ($type === 'admin') {
+//                        return $this->render('mine/homeAdmin.html.twig');
+//                    } elseif ($type === 'student') {
+//                        return $this->render('mine/homeStudent.html.twig');
+//                    } elseif ($type === 'school') {
+//                        return $this->render('mine/homeSchool.html.twig');
+//                    }
+//                }
+//            } else {
+//                return $this->redirect('login');
+//            }
+//
+//        }
+//        return $this->render('mine/login.html.twig', array(
+//            'form' => $form->createView(),
+//        ));
+        return $this->render('mine/login.html.twig');
+        
     }
+    /**
+     * @Route("submitLogin", name="submitLogin")
+     */
+    public function submitLoginAction(Request $request)
+    {
+        $userName=$request->get('username');
+        $password=$request->get('password');
 
+        return $this->homeAction();
+    }
     /**
      * @Route("back", name="back")
      */
